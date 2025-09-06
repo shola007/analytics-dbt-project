@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: dbt_stripe
+    database: raw
+    schema: stripe
+    tables:
+      - name: payments
+        identifier: payments
