@@ -23,7 +23,7 @@ models:
     description: Indicates whether the customer is also an employee.
   - name: first_order_date
     description: The date when the customer placed their first order.
-  - name: most_recent_order_date
+  - name: latest_order_date
     description: The date when the customer placed their most recent order.
   - name: numbers_of_orders
     description: The total number of orders placed by the customer.
