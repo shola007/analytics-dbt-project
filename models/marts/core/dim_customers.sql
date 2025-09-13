@@ -12,13 +12,14 @@ customer_orders as(
     select 
         customer_id,
         min(order_date) as first_order_date,
-        max(order_date) as most_recent_order_date,
+        max(order_date) as latest_order_date,
         count(order_id) as numbers_of_orders,
-        sum(amount) as lifetime_value
+        sum(total_amount) as lifetime_value
     from orders
     group by 1
 
 ),
+
 final as(
     select
         customers.customer_id,
@@ -26,7 +27,7 @@ final as(
         customers.last_name,
         employees.employee_id is not null as is_employee,
         customer_orders.first_order_date,
-        customer_orders.most_recent_order_date,
+        customer_orders.latest_order_date,
         coalesce(customer_orders.numbers_of_orders, 0) as numbers_of_orders,
         customer_orders.lifetime_value
     from customers

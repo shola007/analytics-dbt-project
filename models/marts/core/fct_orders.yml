@@ -1,0 +1,25 @@
+models:
+- name: fct_orders
+  description: This model consolidates order information with payment details to provide
+    a comprehensive view of each order, including the total amount paid. It joins
+    order data with payment data to ensure that only successful payments are considered,
+    and fills in missing payment amounts with zero for orders without successful payments.
+  columns:
+  - name: order_id
+    description: A unique identifier for each order.
+    data_tests:
+      - unique
+      - not_null
+  - name: customer_id
+    description: The unique identifier of the customer who placed the order.
+    data_tests:
+      - not_null
+  - name: order_date
+    description: The date on which the order was placed.
+    data_tests:
+      - not_null
+  - name: total_amount
+    description: The total amount paid for the order, considering only successful
+      payments.
+    data_tests:
+      - not_null

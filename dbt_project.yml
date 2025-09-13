@@ -43,6 +43,8 @@ models:
     - "{{ insert_audits('model_start') }}"
   post-hook:
     - "{{ insert_audits('model_end') }}"
+  +post-hook:
+      - "GRANT SELECT ON {{ this }} TO ROLE jaffle_shop"
   dbt_jaffle_shop:
     staging:
       +materialized: view
